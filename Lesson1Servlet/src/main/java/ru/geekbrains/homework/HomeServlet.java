@@ -40,12 +40,15 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("New Get request");
        StringBuilder sb=new StringBuilder();
+       sb.append("<ol>");
        for (int i=0; i<products.size();i++) {
-            sb.append("<p>");
+            sb.append("<li>");
             sb.append("Id= "+products.get(i).getId());
             sb.append(" Title= "+products.get(i).getTitle());
             sb.append(" Cost="+products.get(i).getCost());
-            sb.append("</p>"); }
+            sb.append("</li>"); }
+       sb.append("</ol>");
+       resp.setHeader("Content-Type", "text/html; charset=utf-8");
        resp.getWriter().println(sb);
     }
 }
